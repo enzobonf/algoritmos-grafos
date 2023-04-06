@@ -14,9 +14,8 @@ void Grafo::inicializaMatriz(){
     this->matriz = new int*[nVertices];
     for(int i = 0; i < nVertices; i++){
         this->matriz[i] = new int[nVertices];
-        for(int j = 0; j < nVertices; j++){
-            matriz[i][j] = 0;
-        }
+        for(int j = 0; j < nVertices; j++)
+            matriz[i][j] = i == j ? 0 : infinity;
     }
 }
 
@@ -30,13 +29,23 @@ void Grafo::addAresta(int origem, int dest, int peso){
 }
 
 void Grafo::mostrar() {
-  int v, w;
-  for (v = 0; v < nVertices; ++v) {
-    printf("%2d:", v);
-    for (w = 0; w < nVertices; ++w)
-      if (matriz[v][w] != 0)
-        printf(" %2d (%2d)", w, matriz[v][w]);
-    printf("\n");
-  }
-  printf("\n\n");
+
+    printf("%4s", "");
+    for (int i = 0; i < nVertices; i++)
+        printf("%2d%3s", i, "");
+
+    cout << '\n';
+    for (int i = 0; i < nVertices; i++) {
+        printf("%2d  ", i);
+        for (int j = 0; j < nVertices; j++){
+            if(matriz[i][j] != infinity){
+                printf("%2d%3s", matriz[i][j], "");
+            }
+            else{
+                printf("%2s%3s", "-", "");
+            }
+        }
+        cout << '\n';
+    }
+    cout << '\n' << '\n';
 }

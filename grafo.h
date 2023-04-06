@@ -1,12 +1,16 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <limits>
 #include <stdio.h>
 
 using namespace std;
 
 #ifndef GRAFO_H
 #define GRAFO_H
+
+const int infinity =  std::numeric_limits<int>::max();
+enum {BRANCO, CINZA, PRETO};
 
 struct Aresta {
   int dest;

@@ -27,7 +27,7 @@ Grafo Arquivo::lerGrafo(){
         cout << orientado << " " << nVertices << '\n';
 
         while(fscanf(fin, "(%d,%d):%d\n", &origem, &dest, &peso) != EOF){
-             printf("%d %d %d\n", origem, dest, peso);
+             //printf("%d %d %d\n", origem, dest, peso);
              grafo.addAresta(origem, dest, peso);
         }
 

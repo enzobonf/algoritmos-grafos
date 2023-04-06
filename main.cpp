@@ -2,16 +2,17 @@
 #include <cstdlib>
 #include <cstdio>
 #include "arquivo.h"
+#include "algoritmos.h"
 
 using namespace std;
 
 int main(){
 
-    Arquivo *arq = new Arquivo("grafo.txt");
+    Arquivo *arq = new Arquivo("grafo2.txt");
     Grafo grafo = arq->lerGrafo();
     grafo.mostrar();
 
-    cout << grafo.temPesoNegativo;
+    Algoritmos::executarDFS(grafo, 3);
 
     return 0;
 }
