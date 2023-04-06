@@ -10,12 +10,12 @@ using namespace std;
 
 struct Aresta {
   int dest;
-  int custo;
+  int peso;
 
-  Aresta(int dest, int custo): dest(dest), custo(custo) {};
+  Aresta(int dest, int peso): dest(dest), peso(peso) {};
 
   /* friend bool operator> (Aresta a1, Aresta a2) {
-    return a1.custo > a2.custo;
+    return a1.peso > a2.peso;
   }; */
 };
 
@@ -24,12 +24,13 @@ class Grafo {
       void inicializaMatriz();
 
     public:
-        int nVertices;
-        bool isOrientado;
         int **matriz;
+        int nVertices;
+        bool temPesoNegativo = false;
+        bool isOrientado;
 
         Grafo(int nVertices, bool isOrientado);
-        void addAresta(int origem, int dest, int custo);
+        void addAresta(int origem, int dest, int peso);
         void mostrar();
 };
 

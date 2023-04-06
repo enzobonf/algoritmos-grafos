@@ -20,11 +20,13 @@ void Grafo::inicializaMatriz(){
     }
 }
 
-void Grafo::addAresta(int origem, int dest, int custo){
-    matriz[origem][dest] = custo;
+void Grafo::addAresta(int origem, int dest, int peso){
+    matriz[origem][dest] = peso;
     if(!this->isOrientado){
-        matriz[dest][origem] = custo;
+        matriz[dest][origem] = peso;
     }
+
+    if(peso < 0) temPesoNegativo = true;
 }
 
 void Grafo::mostrar() {

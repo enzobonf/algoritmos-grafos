@@ -15,7 +15,7 @@ Grafo Arquivo::lerGrafo(){
     if(fin != nullptr){
 
         int nVertices; bool orientado;
-        int origem, dest, custo;
+        int origem, dest, peso;
         char linha[20];
 
         fscanf(fin, "orientado=%s\n", linha);
@@ -26,9 +26,9 @@ Grafo Arquivo::lerGrafo(){
 
         cout << orientado << " " << nVertices << '\n';
 
-        while(fscanf(fin, "(%d,%d):%d\n", &origem, &dest, &custo) != EOF){
-             printf("%d %d %d\n", origem, dest, custo);
-             grafo.addAresta(origem, dest, custo);
+        while(fscanf(fin, "(%d,%d):%d\n", &origem, &dest, &peso) != EOF){
+             printf("%d %d %d\n", origem, dest, peso);
+             grafo.addAresta(origem, dest, peso);
         }
 
         return grafo;
