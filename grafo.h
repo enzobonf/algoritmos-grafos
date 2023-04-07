@@ -1,6 +1,4 @@
 #include <iostream>
-#include <vector>
-#include <list>
 #include <limits>
 #include <stdio.h>
 

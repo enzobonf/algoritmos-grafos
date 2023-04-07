@@ -13,6 +13,7 @@ int main(){
     grafo.mostrar();
 
     Algoritmos::executarDFS(grafo, 3);
+    Algoritmos::executarBFS(grafo, 3);
 
     return 0;
 }
