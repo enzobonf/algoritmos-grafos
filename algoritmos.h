@@ -9,10 +9,9 @@ using namespace std;
 
 class Algoritmos {
     public:
-        static void executarDFS(Grafo g, int s);
+        static void executarDFS(Grafo g, int s);        
 };
 
-
-void DFS_aux(Grafo g, int u, vector<int> &d, vector<int> &cor, vector<int> &pai, int &timestamp);
+void DFS_visit(Grafo g, int u, vector<int> &visitados, vector<int> &cor);
 
 #endif

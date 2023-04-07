@@ -2,46 +2,34 @@
 #include "grafo.h"
 
 void Algoritmos::executarDFS(Grafo g, int s){
-    std::vector<int> d(g.nVertices, infinity);
-    std::vector<int> cor(10, BRANCO);
-    std::vector<int> pai(10, -1);
-
-
+    std::vector<int> cor(g.nVertices, BRANCO);
+    std::vector<int> visitados;
     for (int u = 0; u < g.nVertices; u++) {
         cor[u] = BRANCO;
-        pai[u] = -1;
     }
 
-    int timestamp = 0;
+    DFS_visit(g, s, visitados, cor);
 
-    cout << s << " - ";
-    DFS_aux(g, s, d, cor, pai, timestamp);
-
-    /* for (int v = 0; v < g.nVertices; v++) {
-        printf("%d\n", d[v]);
-    } */
+    for(int i = 0; i < visitados.size(); i++){
+        cout << visitados[i];
+        if(i != visitados.size() - 1)
+            cout << " - ";
+    }
 }
 
-void DFS_aux(Grafo g, int u, vector<int> &d, vector<int> &cor, vector<int> &pai, int &timestamp){
+void DFS_visit(Grafo g, int u, vector<int> &visitados, vector<int> &cor){
     cor[u] = CINZA;
-    timestamp++;
+    visitados.push_back(u);
 
-    d[u] = timestamp;
     int *adj = g.matriz[u];
 
-    cout << "- " << u;
-
-    int v;
-    for (v = 0; v < g.nVertices; v++) {
+    for (int v = 0; v < g.nVertices; v++) {
         if (adj[v] == infinity)
             continue;
-
+            
         if (cor[v] == BRANCO) {
-            pai[v] = u;
-            DFS_aux(g, v, d, cor, pai, timestamp);
+            DFS_visit(g, v, visitados, cor);
         }
     }
-
     cor[u] = PRETO;
-    timestamp++;
 }
