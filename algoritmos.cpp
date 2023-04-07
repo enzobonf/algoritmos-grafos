@@ -61,5 +61,9 @@ void Algoritmos::executarBFS(Grafo g, int s){
 
         fila.pop();
         cor[u] = PRETO;
+
+        if(!fila.empty()) printf(" - ");
     }
+
+    cout <<  '\n';
 }
