@@ -8,7 +8,7 @@ using namespace std;
 
 int main(){
 
-    Arquivo *arq = new Arquivo("grafo1.txt");
+    Arquivo *arq = new Arquivo("grafo2.txt");
     Grafo grafo = arq->lerGrafo();
     grafo.mostrar();
 

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <vector>
 #include <stdio.h>
 
 using namespace std;
@@ -9,6 +10,7 @@ using namespace std;
 
 const int infinity =  std::numeric_limits<int>::max();
 enum {BRANCO, CINZA, PRETO};
+typedef vector<vector<int>> Matriz;
 
 struct Aresta {
   int dest;
@@ -24,9 +26,9 @@ struct Aresta {
 class Grafo {
     private:
       void inicializaMatriz();
-
     public:
-        int **matriz;
+        Matriz matriz;
+        //int **matriz;
         int nVertices;
         bool temPesoNegativo = false;
         bool isOrientado;

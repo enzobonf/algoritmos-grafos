@@ -23,7 +23,7 @@ void DFS_visit(Grafo g, int u, vector<int> &visitados, vector<int> &cor){
     cor[u] = CINZA;
     visitados.push_back(u);
 
-    int *adj = g.matriz[u];
+    auto adj = g.matriz[u];
     for (int v = 0; v < g.nVertices; v++) {
         if (adj[v] == infinity)
             continue;
@@ -47,7 +47,7 @@ void Algoritmos::executarBFS(Grafo g, int s){
     while(!fila.empty()){
         u = fila.front();
         cout << u;
-        int *adj = g.matriz[u];
+        auto adj = g.matriz[u];
 
         for(int v = 0; v < g.nVertices; v++){
             if(adj[v] == infinity) 
@@ -108,7 +108,7 @@ void dijkstraAux(Grafo g, priority_queue<pair<int, int>> &pq, vector<int> &d, ve
         pq.pop();
         cor[u] = CINZA;
 
-        int *adj = g.matriz[u];
+        auto adj = g.matriz[u];
         for(int v = 0; v < g.nVertices; v++){
             if(adj[v] == infinity || u == v) continue;
 
@@ -165,7 +165,7 @@ void Algoritmos::executarBellmanFord(Grafo g, int s){
 }
 
 bool bellmanFordAux(Grafo g, vector<int> &d, vector<int> &pai, vector<int> &cor){
-    int i, u, v, *adj;
+    int i, u, v; vector<int> adj;
     for(i = 0; i < g.nVertices - 1; i++)
         for(u = 0; u < g.nVertices; u++){
             adj = g.matriz[u];

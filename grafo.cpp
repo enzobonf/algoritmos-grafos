@@ -11,12 +11,18 @@ Grafo::Grafo(int nVertices, bool isOrientado){
 }
 
 void Grafo::inicializaMatriz(){
-    this->matriz = new int*[nVertices];
+    /* this->matriz = new int*[nVertices];
     for(int i = 0; i < nVertices; i++){
         this->matriz[i] = new int[nVertices];
         for(int j = 0; j < nVertices; j++)
             matriz[i][j] = i == j ? 0 : infinity;
-    }
+    } */
+    this->matriz = Matriz(this->nVertices, vector<int>(this->nVertices));
+
+    for(int i = 0; i < nVertices; i++)
+        for(int j = 0; j < nVertices; j++)
+            matriz[i][j] = i == j ? 0 : infinity;
+
 }
 
 void Grafo::addAresta(int origem, int dest, int peso){
