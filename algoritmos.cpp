@@ -1,11 +1,8 @@
 #include "algoritmos.h"
 #include "grafo.h"
 
-//Executa o algoritmo Busca em Profundidade (Depth-First-Search) - DFS
 //Pre-condicao: Grafo existente, vertice inicial existente
 //Pos-condicao: imprime a ordem de visitacao dos vertices.
-//Entrada: objeto Grafo e vértice inicial
-//Retorno: Nenhum
 void Algoritmos::executarDFS(Grafo g, int s){
     vector<int> cor(g.nVertices, BRANCO);
     vector<int> visitados;
@@ -24,14 +21,8 @@ void Algoritmos::executarDFS(Grafo g, int s){
     cout << '\n';
 }
 
-//Realiza a visita do vertice no grafo, identificando seu estado(BRANCO, CINZA, PRETO)
-// e alterando o mesmo caso necessario
 //Pre-condicao: Grafo existente, vetores validos, indice do estado atual valido
 //Pos-condicao: visita no NO do grafo eh realizado
-//Entrada: objeto Grafo e índice do vértice atual
-// vetor de inteiros que representa a cor de cada vértice do grafo, inicializado com BRANCO para cada vértice,
-// vetor vazio que será usado para armazenar os vértices visitados durante a busca em profundidade.
-//Retorno: Nenhum
 void DFS_visit(Grafo g, int u, vector<int> &visitados, vector<int> &cor){
     cor[u] = CINZA;
     visitados.push_back(u);
@@ -49,11 +40,8 @@ void DFS_visit(Grafo g, int u, vector<int> &visitados, vector<int> &cor){
     cor[u] = PRETO;
 }
 
-//Executa o algoritmo Busca em Largura (Breadth-First-Search) - BFS
 //Pre-condicao: Grafo existente, indice inicial existente
 //Pos-condicao: imprime a ordem de visitacao dos vertices
-//Entrada: objeto Grafo e vértice inicial
-//Retorno: Nenhum
 void Algoritmos::executarBFS(Grafo g, int s){
     vector<int> cor(g.nVertices, BRANCO);
     queue<int> fila; int u;
@@ -86,11 +74,8 @@ void Algoritmos::executarBFS(Grafo g, int s){
     cout <<  '\n';
 }
 
-//Executa o Algoritmo de Dijkstra
 //Pre-condicao: Grafo existente e origem existente
 //Pos-condicao: imprime vertice de origem e vertice de destino com a respectiva distancia e caminho
-//Entrada: objeto Grafo e vertice inicial
-//Retorno: Nenhum
 void Algoritmos::executarDijkstra(Grafo g, int s){
 
     if(g.temPesoNegativo){
@@ -124,14 +109,8 @@ void Algoritmos::executarDijkstra(Grafo g, int s){
 
 }
 
-//Realiza a visita do vertice no grafo e analiza o mesmo de forma a auxiliar o algoritmo de dijkstra
 //Pre-condicao: Grafo existente, vetores validos, indice do estado atual valido
 //Pos-condicao: visita vertice do grafo eh realizado
-//Entrada: objeto Grafo, fila de prioridade dos vertices, 
-// vetor de inteiros que representa a cor de cada vértice do grafo, inicializado com BRANCO para cada vértice,
-// vetor vazio que será usado para armazenar os vértices visitados durante a busca em profundidade,
-// vetor com as distancias minimas ate a origem
-//Retorno: Nenhum
 void dijkstraAux(Grafo g, priority_queue<pair<int, int>> &pq, vector<int> &d, vector<int> &pai, vector<int> &cor){
     while(!pq.empty()){
         auto pair = pq.top();
@@ -153,11 +132,8 @@ void dijkstraAux(Grafo g, priority_queue<pair<int, int>> &pq, vector<int> &d, ve
     }
 }
 
-//Funcao para auxiliar dijkstra, imprime o caminho da origem ate o devido vertice
 //Pre-condicao: indices e vetor validos
 //Pos-condicao: impressao do caminho da origem ate o vertice passado
-//Entrada: vertice inicial, vertice atual, vetor com o caminho
-//Retorno: Nenhum
 void imprimirCaminho(int s, int v, vector<int> pai){
     if(v == s){
         cout << s;
@@ -171,11 +147,8 @@ void imprimirCaminho(int s, int v, vector<int> pai){
     }
 }
 
-//Dado um vertice de origem, calcular os menores caminhos para os demais vertices usando o algoritmo de Bellman-Ford
 //Pre-condicao: Grafo existente estado inicial existente
-//Pos-condicao: 
-//Entrada:
-//Retorno: Nenhum
+//Pos-condicao: Menor caminho eh entre a origem e demais caminhos eh calculado e impresso
 void Algoritmos::executarBellmanFord(Grafo g, int s){
     vector<int> d(g.nVertices, infinity);
     vector<int> pai(g.nVertices, -1);
@@ -203,11 +176,8 @@ void Algoritmos::executarBellmanFord(Grafo g, int s){
     }
 }
 
-//
-//Pre-condicao: 
-//Pos-condicao:
-//Entrada:
-//Retorno:
+//Pre-condicao: Grafo existente e vetores validos
+//Pos-condicao: atualiza o vetor d com as distâncias mínimas entre o vértice inicial e os demais vértices do grafo
 bool bellmanFordAux(Grafo g, vector<int> &d, vector<int> &pai, vector<int> &cor){
     int i, u, v; vector<int> adj;
     for(i = 0; i < g.nVertices - 1; i++)
@@ -238,11 +208,8 @@ bool bellmanFordAux(Grafo g, vector<int> &d, vector<int> &pai, vector<int> &cor)
     return true;
 }
 
-//Calcula o menor caminho entre todos os pares de vertices usando o algoritmo de Floyd Warshall
 //Pre-condicao: Grafo existente
 //Pos-condicao: Menor caminho entre todos os pares de vertices eh calculado e impresso na tela
-//Entrada: objeto para Grafo g
-//Retorno: Nenhum
 void Algoritmos::executarFloydWarshall(Grafo g){
     auto resultado = floydWarshallAux(g.matriz);
     printMatriz(resultado.d);
@@ -260,11 +227,9 @@ void Algoritmos::executarFloydWarshall(Grafo g){
         }
 }
 
-//
-//Pre-condicao: Grafo existente
-//Pos-condicao:
-//Entrada:
-//Retorno:
+//Pre-condicao: Matriz contendo dados de um Grafo
+//Pos-condicao: Retorna a matriz de distâncias mínimas e a matriz de predecessores
+// que são atualizadas de acordo com o resultado do algoritmo de Floyd-Warshall
 ResultadoFloydWarshall floydWarshallAux(Matriz matriz){
     Matriz d = matriz;
     Matriz pai = Matriz(matriz.size(), vector<int>(matriz.size()));
@@ -286,11 +251,8 @@ ResultadoFloydWarshall floydWarshallAux(Matriz matriz){
     return {d, pai};
 }
 
-//Calcular arvore geradora mınima usando o algoritmo Kruskal
 //Pre-condicao: Grafo existente
 //Pos-condicao: Arvore geradora eh calculada e impressa
-//Entrada: objeto para Grafo g
-//Retorno: Nenhum
 void Algoritmos::executarKruskal(Grafo g){
     
     auto resultado = kruskalAux(g);
@@ -304,6 +266,9 @@ void Algoritmos::executarKruskal(Grafo g){
 
 }
 
+//Pre-condicao: Grafo existente
+//Pos-condicao: O retorno contem o vetor de arestas que contem a arvore geradora minima
+// junto com o custo total da arvore
 ResultadoKruskal kruskalAux(Grafo g){
 
     vector<Aresta> arestas;
@@ -335,11 +300,15 @@ ResultadoKruskal kruskalAux(Grafo g){
     return {resultado, custo};
 }
 
+//Pre-condicao: vetor para pai existente, vertice existente
+//Pos-condicao: O retorno eh o pai do vertice
 int find_set(vector<int> &pai, int v){
     if(v == pai[v]) return v;
     return find_set(pai, pai[v]);
 }
 
+//Pre-condicao: Vetor para pai existente, "a" e "b" sao vertices existentes no grafo
+//Pos-condicao: Atualiza o Vetor de Pai
 void union_sets(vector<int> &pai, int a, int b){
     pai[a] = pai[b];
 }
