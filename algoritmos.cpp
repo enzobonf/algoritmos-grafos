@@ -194,7 +194,7 @@ bool bellmanFordAux(Grafo g, vector<int> &d, vector<int> &pai, vector<int> &cor)
 
 void Algoritmos::executarFloydWarshall(Grafo g){
     auto resultado = floydWarshallAux(g.matriz);
-    printMatriz(resultado.pai);
+    printMatriz(resultado.d);
 
     for(int i = 0; i < g.nVertices; i++)
         for(int j = 0; j < g.nVertices; j++){
