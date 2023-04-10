@@ -136,7 +136,6 @@ void imprimirCaminho(int s, int v, vector<int> pai){
 }
 
 void Algoritmos::executarBellmanFord(Grafo g, int s){
-
     vector<int> d(g.nVertices, infinity);
     vector<int> pai(g.nVertices, -1);
     vector<int> cor(g.nVertices, BRANCO);
@@ -161,7 +160,6 @@ void Algoritmos::executarBellmanFord(Grafo g, int s){
     else{
         cout << "Nao e possivel aplicar o algoritmo de Bellman Ford - ha um ciclo negativo no grafo\n";
     }
-
 }
 
 bool bellmanFordAux(Grafo g, vector<int> &d, vector<int> &pai, vector<int> &cor){
@@ -220,9 +218,9 @@ ResultadoFloydWarshall floydWarshallAux(Matriz matriz){
         for(int j = 0; j < v; j++)
             pai[i][j] = i == j ? -1 : i;
 
-    for(int k = 0; k < d.size(); k++)
-        for(int i = 0; i < d.size(); i++)
-            for(int j = 0; j < d.size(); j++){
+    for(int k = 0; k < v; k++)
+        for(int i = 0; i < v; i++)
+            for(int j = 0; j < v; j++){
                 if(d[i][j] > (d[i][k] + d[k][j]) && (d[k][j] != infinity && d[i][k] != infinity)){
                     d[i][j] = d[i][k] + d[k][j];
                     pai[i][j] = pai[k][j];
