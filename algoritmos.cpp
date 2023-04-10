@@ -286,10 +286,10 @@ ResultadoFloydWarshall floydWarshallAux(Matriz matriz){
     return {d, pai};
 }
 
-//Executa o algoritmo
+//Calcular arvore geradora mınima usando o algoritmo Kruskal
 //Pre-condicao: Grafo existente
-//Pos-condicao:
-//Entrada:
+//Pos-condicao: Arvore geradora eh calculada e impressa
+//Entrada: objeto para Grafo g
 //Retorno: Nenhum
 void Algoritmos::executarKruskal(Grafo g){
     
