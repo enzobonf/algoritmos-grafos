@@ -95,7 +95,7 @@ void Algoritmos::executarDijkstra(Grafo g, int s){
 
         cout << " caminho: ";
 
-        imprimirCaminho(g, s, u, d, pai);
+        imprimirCaminho(s, u, pai);
         printf("\n");
     }
 
@@ -122,7 +122,7 @@ void dijkstraAux(Grafo g, priority_queue<pair<int, int>> &pq, vector<int> &d, ve
     }
 }
 
-void imprimirCaminho(Grafo g, int s, int v, vector<int> d, vector<int> pai){
+void imprimirCaminho(int s, int v, vector<int> pai){
     if(v == s){
         cout << s;
     }
@@ -130,7 +130,7 @@ void imprimirCaminho(Grafo g, int s, int v, vector<int> d, vector<int> pai){
         cout << "--";
     }
     else{
-        imprimirCaminho(g, s, pai[v], d, pai);
+        imprimirCaminho(s, pai[v], pai);
         cout << " - " << v;
     }
 }
@@ -154,7 +154,7 @@ void Algoritmos::executarBellmanFord(Grafo g, int s){
 
             cout << " caminho: ";
 
-            imprimirCaminho(g, s, u, d, pai);
+            imprimirCaminho(s, u, pai);
             printf("\n");
         }
     }
@@ -187,9 +187,47 @@ bool bellmanFordAux(Grafo g, vector<int> &d, vector<int> &pai, vector<int> &cor)
             if(d[u] == infinity || adj[v] == infinity || u == v) continue;
 
             if(d[v] > d[u] + adj[v])
-                return false;
+                return false; // tem ciclo negativo
         }
     }
 
     return true;
+}
+
+void Algoritmos::executarFloydWarshall(Grafo g){
+    auto resultado = floydWarshallAux(g.matriz);
+    printMatriz(resultado.pai);
+
+    for(int i = 0; i < g.nVertices; i++)
+        for(int j = 0; j < g.nVertices; j++){
+            printf("caminho de %d para %d: ", i, j);
+            if(resultado.d[i][j] != infinity){
+                imprimirCaminho(i, j, resultado.pai[i]);
+            }
+            else{
+                cout << "--";
+            }
+            cout << '\n';
+        }
+}
+
+ResultadoFloydWarshall floydWarshallAux(Matriz matriz){
+    Matriz d = matriz;
+    Matriz pai = Matriz(matriz.size(), vector<int>(matriz.size()));
+    int v = d.size();
+
+    for(int i = 0; i < v; i++)
+        for(int j = 0; j < v; j++)
+            pai[i][j] = i == j ? -1 : i;
+
+    for(int k = 0; k < d.size(); k++)
+        for(int i = 0; i < d.size(); i++)
+            for(int j = 0; j < d.size(); j++){
+                if(d[i][j] > (d[i][k] + d[k][j]) && (d[k][j] != infinity && d[i][k] != infinity)){
+                    d[i][j] = d[i][k] + d[k][j];
+                    pai[i][j] = pai[k][j];
+                }
+            }
+    
+    return {d, pai};
 }

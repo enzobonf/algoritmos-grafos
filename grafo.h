@@ -38,4 +38,6 @@ class Grafo {
         void mostrar();
 };
 
+void printMatriz(Matriz matriz);
+
 #endif

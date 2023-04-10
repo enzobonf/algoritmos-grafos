@@ -11,18 +11,10 @@ Grafo::Grafo(int nVertices, bool isOrientado){
 }
 
 void Grafo::inicializaMatriz(){
-    /* this->matriz = new int*[nVertices];
-    for(int i = 0; i < nVertices; i++){
-        this->matriz[i] = new int[nVertices];
-        for(int j = 0; j < nVertices; j++)
-            matriz[i][j] = i == j ? 0 : infinity;
-    } */
     this->matriz = Matriz(this->nVertices, vector<int>(this->nVertices));
-
     for(int i = 0; i < nVertices; i++)
         for(int j = 0; j < nVertices; j++)
             matriz[i][j] = i == j ? 0 : infinity;
-
 }
 
 void Grafo::addAresta(int origem, int dest, int peso){
@@ -35,15 +27,19 @@ void Grafo::addAresta(int origem, int dest, int peso){
 }
 
 void Grafo::mostrar() {
+    printMatriz(matriz);
+}
 
+void printMatriz(Matriz matriz){
+    int v = matriz.size();
     printf("%4s", "");
-    for (int i = 0; i < nVertices; i++)
+    for (int i = 0; i < v; i++)
         printf("%2d%3s", i, "");
 
     cout << '\n';
-    for (int i = 0; i < nVertices; i++) {
+    for (int i = 0; i < v; i++) {
         printf("%2d  ", i);
-        for (int j = 0; j < nVertices; j++){
+        for (int j = 0; j < v; j++){
             if(matriz[i][j] != infinity){
                 printf("%2d%3s", matriz[i][j], "");
             }
