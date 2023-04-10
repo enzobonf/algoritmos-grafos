@@ -1,7 +1,9 @@
 #include <iostream>
 #include <limits>
 #include <vector>
+#include <set>
 #include <stdio.h>
+#include <sstream>
 
 using namespace std;
 
@@ -37,6 +39,7 @@ class Grafo {
         Grafo(int nVertices, bool isOrientado);
         void addAresta(int origem, int dest, int peso);
         void mostrar();
+        void desenhar();
 };
 
 void printMatriz(Matriz matriz);

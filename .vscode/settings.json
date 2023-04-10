@@ -54,7 +54,17 @@
         "xmemory0": "cpp",
         "xstddef": "cpp",
         "xtr1common": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cstdarg": "cpp",
+        "cwctype": "cpp",
+        "string_view": "cpp",
+        "functional": "cpp",
+        "numeric": "cpp",
+        "cinttypes": "cpp"
     },
     "C_Cpp.default.includePath": [
         "${workspaceFolder}/**",
