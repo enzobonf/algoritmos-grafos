@@ -229,3 +229,18 @@ ResultadoFloydWarshall floydWarshallAux(Matriz matriz){
     
     return {d, pai};
 }
+
+void Algoritmos::executarKruskal(Grafo g){
+    
+    vector<Aresta> arestas;
+    for(int i = 0; i < g.nVertices; i++){
+        for(int j = 0; j < g.nVertices; j++){
+            if(i != j && g.matriz[i][j] != infinity){
+                arestas.push_back(Aresta(i, j, g.matriz[i][j]));
+            }
+        }
+    }
+
+    sort(arestas.begin(), arestas.end());
+
+}

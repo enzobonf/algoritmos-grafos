@@ -2,6 +2,7 @@
 #include <vector>
 #include <queue>
 #include <string>
+#include <algorithm>
 #include "grafo.h"
 
 using namespace std;
@@ -21,6 +22,7 @@ class Algoritmos {
         static void executarDijkstra(Grafo g, int s);        
         static void executarBellmanFord(Grafo g, int s);        
         static void executarFloydWarshall(Grafo g);        
+        static void executarKruskal(Grafo g);        
 };
 
 void DFS_visit(Grafo g, int u, vector<int> &visitados, vector<int> &cor);

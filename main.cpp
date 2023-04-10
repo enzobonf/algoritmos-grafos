@@ -17,7 +17,9 @@ int main(){
     Algoritmos::executarDijkstra(grafo, 0);
     Algoritmos::executarBellmanFord(grafo, 1); */
 
-    Algoritmos::executarFloydWarshall(grafo);
+    //Algoritmos::executarFloydWarshall(grafo);
+
+    Algoritmos::executarKruskal(grafo);
 
     return 0;
 }

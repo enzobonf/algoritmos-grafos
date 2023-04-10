@@ -13,14 +13,15 @@ enum {BRANCO, CINZA, PRETO};
 typedef vector<vector<int>> Matriz;
 
 struct Aresta {
+  int origem;
   int dest;
   int peso;
 
-  Aresta(int dest, int peso): dest(dest), peso(peso) {};
+  Aresta(int origem, int dest, int peso): origem(origem), dest(dest), peso(peso) {};
 
-  /* friend bool operator> (Aresta a1, Aresta a2) {
-    return a1.peso > a2.peso;
-  }; */
+  bool operator< (const Aresta& a2) const {
+    return peso < a2.peso;
+  };
 };
 
 class Grafo {
