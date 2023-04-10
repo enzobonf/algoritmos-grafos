@@ -15,6 +15,11 @@ struct ResultadoFloydWarshall {
     Matriz pai;
 };
 
+struct ResultadoKruskal {
+    vector<Aresta> arestas;
+    int custo;
+};
+
 class Algoritmos {
     public:
         static void executarDFS(Grafo g, int s);        
@@ -30,5 +35,9 @@ void dijkstraAux(Grafo g, priority_queue<pair<int, int>> &pq, vector<int> &d, ve
 bool bellmanFordAux(Grafo g, vector<int> &d, vector<int> &pai, vector<int> &cor);
 void imprimirCaminho(int s, int v, vector<int> pai);
 ResultadoFloydWarshall floydWarshallAux(Matriz matriz);
+ResultadoKruskal kruskalAux(Grafo g);
+
+int find_set(vector<int> &pai, int v);
+void union_sets(vector<int> &pai, int a, int b);
 
 #endif
