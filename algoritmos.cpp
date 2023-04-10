@@ -293,6 +293,19 @@ ResultadoFloydWarshall floydWarshallAux(Matriz matriz){
 //Retorno: Nenhum
 void Algoritmos::executarKruskal(Grafo g){
     
+    auto resultado = kruskalAux(g);
+    auto arestas = resultado.arestas;
+    printf("peso total: %d\n", resultado.custo);
+    printf("arestas: ");
+    for(int i = 0; i < arestas.size(); i++){
+        printf("(%d, %d)", arestas[i], arestas[i].dest);
+        if(i != arestas.size() - 1) printf(", ");
+    }
+
+}
+
+ResultadoKruskal kruskalAux(Grafo g){
+
     vector<Aresta> arestas;
     for(int i = 0; i < g.nVertices; i++){
         for(int j = 0; j < g.nVertices; j++){
@@ -303,5 +316,30 @@ void Algoritmos::executarKruskal(Grafo g){
     }
 
     sort(arestas.begin(), arestas.end());
+    vector<int> pai(g.nVertices, -1);
+    vector<Aresta> resultado;
 
+    for(int i = 0; i < g.nVertices; i++){
+        pai[i] = i;
+    }
+    
+    int custo = 0; 
+    for(auto& aresta: arestas){
+        if(find_set(pai, aresta.origem) != find_set(pai, aresta.dest)){
+            custo += aresta.peso;
+            resultado.push_back(aresta);
+            union_sets(pai, aresta.origem, aresta.dest);
+        }
+    }
+
+    return {resultado, custo};
+}
+
+int find_set(vector<int> &pai, int v){
+    if(v == pai[v]) return v;
+    return find_set(pai, pai[v]);
+}
+
+void union_sets(vector<int> &pai, int a, int b){
+    pai[a] = pai[b];
 }

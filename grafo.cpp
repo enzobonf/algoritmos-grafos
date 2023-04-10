@@ -30,6 +30,37 @@ void Grafo::mostrar() {
     printMatriz(matriz);
 }
 
+void Grafo::desenhar() {
+    ostringstream os;
+
+    // Adiciona a linha inicial do grafo
+    os << (isOrientado ? "digraph" : "graph") << " G {\n";
+
+    // Adiciona os vértices
+    for (int i = 0; i < nVertices; i++) {
+        os << i << " [label=\"" << i << "\"];\n";
+    }
+
+    set<pair<int, int>> arestas;
+    // Adiciona as arestas
+    for (int i = 0; i < nVertices; i++) {
+        for (int j = 0; j < nVertices; j++) {
+
+            if(i == j || (!isOrientado && arestas.count({j, i}) > 0)) continue;;
+
+            if (matriz[i][j] != infinity) {
+                os << i << (isOrientado ? " -> " : " -- ") << j;
+                os << " [label=\"" << matriz[i][j] << "\"];\n";
+            }
+
+            if(!isOrientado) arestas.insert({i, j});
+        }
+    }
+
+    os << "}\n";
+    cout << os.str();
+}
+
 void printMatriz(Matriz matriz){
     int v = matriz.size();
     printf("%4s", "");
