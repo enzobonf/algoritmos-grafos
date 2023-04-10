@@ -1,3 +1,0 @@
-C:/Users/enzob/OneDrive/Documentos/Projetos/PAA/algoritmos-grafos/CMakeFiles/main.dir
-C:/Users/enzob/OneDrive/Documentos/Projetos/PAA/algoritmos-grafos/CMakeFiles/edit_cache.dir
-C:/Users/enzob/OneDrive/Documentos/Projetos/PAA/algoritmos-grafos/CMakeFiles/rebuild_cache.dir
