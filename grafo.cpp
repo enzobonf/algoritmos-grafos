@@ -2,6 +2,8 @@
 
 using namespace std;
 
+//Pre-Condicao: Nenhum
+//Pos-Condicao: Grafo recebe seu formato, numero de vertices, se eh orientado e setta Matriz adjacente com 0s
 Grafo::Grafo(int nVertices, bool isOrientado){
     this->nVertices = nVertices;
     this->isOrientado = isOrientado;
@@ -10,6 +12,8 @@ Grafo::Grafo(int nVertices, bool isOrientado){
     cout << "n vertices: " << nVertices << '\n';
 }
 
+//Pre-Condicao: O grafo deve conhecer seu numero de vertices
+//Pos-Condicao: Grafo settado com 0s
 void Grafo::inicializaMatriz(){
     this->matriz = Matriz(this->nVertices, vector<int>(this->nVertices));
     for(int i = 0; i < nVertices; i++)
@@ -17,6 +21,8 @@ void Grafo::inicializaMatriz(){
             matriz[i][j] = i == j ? 0 : infinity;
 }
 
+//Pre-Condicao: Deve-se saber se o grafo eh orientado ou nao (isOrientado)
+//Pos-Condicao: peso do vertice eh inserido na Matriz, condicao de peso negativo eh atualziada se for o caso
 void Grafo::addAresta(int origem, int dest, int peso){
     matriz[origem][dest] = peso;
     if(!this->isOrientado){
@@ -26,10 +32,14 @@ void Grafo::addAresta(int origem, int dest, int peso){
     if(peso < 0) temPesoNegativo = true;
 }
 
+//Pre-Condicao: Grafo existir
+//Pos-Condicao: Imprime a matriz de adjacencia
 void Grafo::mostrar() {
     printMatriz(matriz);
 }
 
+//Pre-Condicao: 
+//Pos-Condicao: imprime uma saida representando grafo com os vértices e arestas e seus respectivos pesos.
 void Grafo::desenhar() {
     ostringstream os;
 
@@ -61,6 +71,8 @@ void Grafo::desenhar() {
     cout << os.str();
 }
 
+//Pre-Condicao: Nenhum
+//Pos-Condicao: Imprime a Matriz de adjacencia
 void printMatriz(Matriz matriz){
     int v = matriz.size();
     printf("%4s", "");

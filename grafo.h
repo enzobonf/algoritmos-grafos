@@ -10,10 +10,16 @@ using namespace std;
 #ifndef GRAFO_H
 #define GRAFO_H
 
+// representa o infinito, estado inicial do vertice do grafo antes de se calcular distancia da origem
 const int infinity =  std::numeric_limits<int>::max();
+
+// Indica o estado do grafo durante seu percorrimento
 enum {BRANCO, CINZA, PRETO};
+
+// matriz para representar grafo
 typedef vector<vector<int>> Matriz;
 
+// estrutura para representar uma aresta
 struct Aresta {
   int origem;
   int dest;
@@ -26,6 +32,7 @@ struct Aresta {
   };
 };
 
+// classe para representar um Grafo
 class Grafo {
     private:
       void inicializaMatriz();
@@ -42,6 +49,7 @@ class Grafo {
         void desenhar();
 };
 
+// imprime o grafo no formato de matriz adjacente
 void printMatriz(Matriz matriz);
 
 #endif
