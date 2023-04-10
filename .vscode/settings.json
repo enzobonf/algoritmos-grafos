@@ -55,5 +55,9 @@
         "xstddef": "cpp",
         "xtr1common": "cpp",
         "xutility": "cpp"
-    }
+    },
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+       " ${GRAPHVIZ_ROOT}/include"
+    ]
 }

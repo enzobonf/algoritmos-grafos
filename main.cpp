@@ -1,8 +1,9 @@
 #include <iostream>
-#include <cstdlib>
 #include <cstdio>
 #include "arquivo.h"
 #include "algoritmos.h"
+#include <cgraph.h>
+#include "gvc.h"
 
 using namespace std;
 
@@ -20,6 +21,15 @@ int main(){
     //Algoritmos::executarFloydWarshall(grafo);
 
     Algoritmos::executarKruskal(grafo);
+
+    /* GVC_t *gvc = gvContext();
+     Agraph_t* g;
+    gvLayout(gvc, nullptr, "dot");
+    gvRenderFilename(gvc, nullptr, "png", "aaaa.png");
+    
+    printf("%p", gvc); */
+
+    //Agraph_t* g = agopen("G", Agundirected, nullptr);
 
     return 0;
 }

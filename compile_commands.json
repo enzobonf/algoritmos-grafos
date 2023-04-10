@@ -1,0 +1,26 @@
+[
+{
+  "directory": "C:/Users/enzob/OneDrive/Documentos/Projetos/PAA/algoritmos-grafos",
+  "command": "C:\\MinGW\\bin\\c++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -std=gnu++11 -o CMakeFiles\\main.dir\\main.cpp.obj -c C:\\Users\\enzob\\OneDrive\\Documentos\\Projetos\\PAA\\algoritmos-grafos\\main.cpp",
+  "file": "C:/Users/enzob/OneDrive/Documentos/Projetos/PAA/algoritmos-grafos/main.cpp",
+  "output": "CMakeFiles/main.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/enzob/OneDrive/Documentos/Projetos/PAA/algoritmos-grafos",
+  "command": "C:\\MinGW\\bin\\c++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -std=gnu++11 -o CMakeFiles\\main.dir\\grafo.cpp.obj -c C:\\Users\\enzob\\OneDrive\\Documentos\\Projetos\\PAA\\algoritmos-grafos\\grafo.cpp",
+  "file": "C:/Users/enzob/OneDrive/Documentos/Projetos/PAA/algoritmos-grafos/grafo.cpp",
+  "output": "CMakeFiles/main.dir/grafo.cpp.obj"
+},
+{
+  "directory": "C:/Users/enzob/OneDrive/Documentos/Projetos/PAA/algoritmos-grafos",
+  "command": "C:\\MinGW\\bin\\c++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -std=gnu++11 -o CMakeFiles\\main.dir\\algoritmos.cpp.obj -c C:\\Users\\enzob\\OneDrive\\Documentos\\Projetos\\PAA\\algoritmos-grafos\\algoritmos.cpp",
+  "file": "C:/Users/enzob/OneDrive/Documentos/Projetos/PAA/algoritmos-grafos/algoritmos.cpp",
+  "output": "CMakeFiles/main.dir/algoritmos.cpp.obj"
+},
+{
+  "directory": "C:/Users/enzob/OneDrive/Documentos/Projetos/PAA/algoritmos-grafos",
+  "command": "C:\\MinGW\\bin\\c++.exe  @CMakeFiles/main.dir/includes_CXX.rsp -std=gnu++11 -o CMakeFiles\\main.dir\\arquivo.cpp.obj -c C:\\Users\\enzob\\OneDrive\\Documentos\\Projetos\\PAA\\algoritmos-grafos\\arquivo.cpp",
+  "file": "C:/Users/enzob/OneDrive/Documentos/Projetos/PAA/algoritmos-grafos/arquivo.cpp",
+  "output": "CMakeFiles/main.dir/arquivo.cpp.obj"
+}
+]
