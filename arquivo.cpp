@@ -4,10 +4,14 @@
 
 using namespace std;
 
+// Pre-Condicao: Nenhum
+// Pos-Condicao: classe arquivo recebe o nome do arquivo a ser lido
 Arquivo::Arquivo(string nomeArq){
     this->nomeArq = nomeArq;
 }
 
+//Pre-Condicao: Nenhum
+//Pos-Condicao: Grafo eh lido
 Grafo Arquivo::lerGrafo(){
     FILE *fin;
     fin = fopen(this->nomeArq.c_str(), "r");

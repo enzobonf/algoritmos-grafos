@@ -20,7 +20,7 @@ int main(){
     //Algoritmos::executarFloydWarshall(grafo);
 
     Algoritmos::executarKruskal(grafo);
-    Algoritmos::executarPrim(grafo, 2);
+   // Algoritmos::executarPrim(grafo, 2);
 
     return 0;
 }
