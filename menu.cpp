@@ -59,9 +59,27 @@ void Menu::iniciar() {
                 Algoritmos::executarFloydWarshall(*grafo);
                 break;
             case 6:
+                if(grafo->isOrientado) {
+                    cout << "Nao e possivel aplicar o algoritmo de Kruskal - o grafo deve ser não-orientado\n";
+                    continue;
+                }
+
+                if(!grafo->isConexo()) {
+                    cout << "Nao e possivel aplicar o algoritmo de Kruskal - o grafo deve ser conexo\n";
+                    continue;
+                }
                 Algoritmos::executarKruskal(*grafo);
                 break;
             case 7:
+                if(grafo->isOrientado) {
+                    cout << "Nao e possivel aplicar o algoritmo de Prim - o grafo deve ser não-orientado\n";
+                    continue;
+                }
+
+                if(!grafo->isConexo()) {
+                    cout << "Nao e possivel aplicar o algoritmo de Prim - o grafo deve ser conexo\n";
+                    continue;
+                }
                 lerVerticeOrigem();
                 Algoritmos::executarPrim(*grafo, origem);
                 break;

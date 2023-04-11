@@ -254,7 +254,6 @@ ResultadoFloydWarshall floydWarshallAux(Matriz matriz){
 //Pre-condicao: Grafo existente
 //Pos-condicao: Arvore geradora eh calculada e impressa
 void Algoritmos::executarKruskal(Grafo g){
-    
     auto resultado = kruskalAux(g);
     auto arestas = resultado.arestas;
     printf("peso total: %d\n", resultado.custo);
@@ -265,7 +264,6 @@ void Algoritmos::executarKruskal(Grafo g){
     }
 
     g.desenhar(arestas, "kruskal.png");
-
 }
 
 //Pre-condicao: Grafo existente
@@ -321,7 +319,6 @@ void union_sets(vector<int> &pai, int a, int b){
 //Entrada: objeto para Grafo g
 //Retorno: Nenhum
 void Algoritmos::executarPrim(Grafo g, int s){
-    
     auto resultado = primAux(g, s);
     auto arestas = resultado.arestas;
     printf("vertice inicial: %d\n", s);
@@ -333,7 +330,6 @@ void Algoritmos::executarPrim(Grafo g, int s){
     }
 
     g.desenhar(arestas, "prim.png");
-
 }
 
 ArvoreGeradora primAux(Grafo g, int s){

@@ -85,6 +85,29 @@ void Grafo::desenhar(vector<Aresta> arvoreGeradora, string outFile) {
     }
 }
 
+bool Grafo::isConexo(){
+    vector<bool> visitados(nVertices, false);
+    queue<int> q;
+    visitados[0] = true;
+    q.push(0);
+
+    while(!q.empty()){
+        int u = q.front();
+        q.pop();
+        for(int v = 0; v < nVertices; v++){
+            if(u != v && matriz[u][v] != infinity && !visitados[v]){
+                visitados[v] = true;
+                q.push(v);
+            }
+        }
+    }
+
+    for(bool v: visitados)
+        if(!v) return false;
+
+    return true;
+}
+
 //Pre-Condicao: Nenhum
 //Pos-Condicao: Imprime a Matriz de adjacencia
 void printMatriz(Matriz matriz){

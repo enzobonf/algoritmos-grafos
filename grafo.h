@@ -2,6 +2,7 @@
 #include <iostream>
 #include <limits>
 #include <vector>
+#include <queue>
 #include <set>
 #include <algorithm>
 #include <stdio.h>
@@ -55,6 +56,8 @@ class Grafo {
         void mostrar();
         void desenhar();
         void desenhar(vector<Aresta> arvoreGeradora, string outFile);
+
+        bool isConexo();
 };
 
 // imprime o grafo no formato de matriz adjacente
