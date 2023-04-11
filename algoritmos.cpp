@@ -77,12 +77,6 @@ void Algoritmos::executarBFS(Grafo g, int s){
 //Pre-condicao: Grafo existente e origem existente
 //Pos-condicao: imprime vertice de origem e vertice de destino com a respectiva distancia e caminho
 void Algoritmos::executarDijkstra(Grafo g, int s){
-
-    if(g.temPesoNegativo){
-        cout << "Nao e possivel aplicar o algoritmo de Dijkstra - grafo possui arestas de peso negativo\n";
-        return;
-    }
-
     vector<int> d(g.nVertices, infinity);
     vector<int> pai(g.nVertices, -1);
     vector<int> cor(g.nVertices, BRANCO);
