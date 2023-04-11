@@ -17,6 +17,7 @@ struct ResultadoFloydWarshall {
     Matriz pai;
 };
 
+// estrutra para guardar o nos da arvore geradora e um inteiro pro custo total
 struct ArvoreGeradora {
     vector<Aresta> arestas;
     int custo;
@@ -47,7 +48,10 @@ class Algoritmos {
         
         //Pre-condicao: Grafo existente
         //Pos-condicao: Arvore geradora eh calculada e impressa
-        static void executarKruskal(Grafo g);        
+        static void executarKruskal(Grafo g);
+
+        //Pre-condicao: grafo existir e estado inicial ser um vertice existente no grafo
+        //Pos-condicao: calcula e retorna vetor de arestas resultado e o custo total da árvore geradora mínima.   
         static void executarPrim(Grafo g, int s);        
 };
 
@@ -73,7 +77,14 @@ void imprimirCaminho(int s, int v, vector<int> pai);
 //Pos-condicao: Retorna a matriz de distâncias mínimas e a matriz de predecessores
 // que são atualizadas de acordo com o resultado do algoritmo de Floyd-Warshall
 ResultadoFloydWarshall floydWarshallAux(Matriz matriz);
+
+//Pre-condicao: Grafo existente
+//Pos-condicao: O retorno contem o vetor de arestas que contem a arvore geradora minima
+// junto com o custo total da arvore
 ArvoreGeradora kruskalAux(Grafo g);
+
+//Pre-condicao: grafo existir e estado inicial ser um vertice existente no grafo
+//Pos-condicao: calcula e retorna vetor de arestas resultado e o custo total da árvore geradora mínima.
 ArvoreGeradora primAux(Grafo g, int s);
 
 //Pre-condicao: vetor para pai existente, vertice existente

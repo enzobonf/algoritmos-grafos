@@ -326,6 +326,8 @@ void Algoritmos::executarPrim(Grafo g, int s){
     g.desenhar(arestas, "prim.png");
 }
 
+//Pre-condicao: grafo existir e estado inicial ser um vertice existente no grafo
+//Pos-condicao: calcula e retorna vetor de arestas resultado e o custo total da árvore geradora mínima.
 ArvoreGeradora primAux(Grafo g, int s){
     
     vector<Aresta> resultado; int custo = 0;
