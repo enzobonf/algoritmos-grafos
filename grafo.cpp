@@ -89,6 +89,8 @@ void Grafo::desenhar(vector<Aresta> arvoreGeradora, string outFile) {
     }
 }
 
+//Pre-Condicoes: O grafo nao deve ser orientado e nao deve conter vertices repetidos
+//Pos-Condicoes: retorna um valor booleano, indicando se o grafo é conexo ou não
 bool Grafo::isConexo(){
     vector<bool> visitados(nVertices, false);
     queue<int> q;
