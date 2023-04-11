@@ -9,8 +9,6 @@ Grafo::Grafo(int nVertices, bool isOrientado){
     this->nVertices = nVertices;
     this->isOrientado = isOrientado;
     inicializaMatriz();
-
-    cout << "n vertices: " << nVertices << '\n';
 }
 
 //Pre-Condicao: O grafo deve conhecer seu numero de vertices
@@ -89,6 +87,29 @@ void Grafo::desenhar(vector<Aresta> arvoreGeradora, string outFile) {
     else{
         cout << "Erro ao desenhar o grafo\n";
     }
+}
+
+bool Grafo::isConexo(){
+    vector<bool> visitados(nVertices, false);
+    queue<int> q;
+    visitados[0] = true;
+    q.push(0);
+
+    while(!q.empty()){
+        int u = q.front();
+        q.pop();
+        for(int v = 0; v < nVertices; v++){
+            if(u != v && matriz[u][v] != infinity && !visitados[v]){
+                visitados[v] = true;
+                q.push(v);
+            }
+        }
+    }
+
+    for(bool v: visitados)
+        if(!v) return false;
+
+    return true;
 }
 
 //Pre-Condicao: Nenhum
