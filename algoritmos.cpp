@@ -367,8 +367,6 @@ ArvoreGeradora primAux(Grafo g, int s){
         for(int v = 0; v < g.nVertices; v++){
             if(adj[v] == infinity || u == v) continue;
 
-            cout << adj[v] << endl;
-
             if(cor[v] == BRANCO && adj[v] < d[v]){  
                 pai[v] = u;
                 d[v] = adj[v];
