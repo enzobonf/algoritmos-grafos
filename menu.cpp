@@ -48,6 +48,10 @@ void Menu::iniciar() {
                 Algoritmos::executarBFS(*grafo, origem);
                 break;
             case 3:
+                if(grafo->temPesoNegativo){
+                    cout << "Nao e possivel aplicar o algoritmo de Dijkstra - grafo possui arestas de peso negativo\n";
+                    continue;
+                }
                 lerVerticeOrigem();
                 Algoritmos::executarDijkstra(*grafo, origem);
                 break;
@@ -60,7 +64,7 @@ void Menu::iniciar() {
                 break;
             case 6:
                 if(grafo->isOrientado) {
-                    cout << "Nao e possivel aplicar o algoritmo de Kruskal - o grafo deve ser não-orientado\n";
+                    cout << "Nao e possivel aplicar o algoritmo de Kruskal - o grafo deve ser nao-orientado\n";
                     continue;
                 }
 
@@ -72,7 +76,7 @@ void Menu::iniciar() {
                 break;
             case 7:
                 if(grafo->isOrientado) {
-                    cout << "Nao e possivel aplicar o algoritmo de Prim - o grafo deve ser não-orientado\n";
+                    cout << "Nao e possivel aplicar o algoritmo de Prim - o grafo deve ser nao-orientado\n";
                     continue;
                 }
 
