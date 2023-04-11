@@ -17,6 +17,7 @@ struct ResultadoFloydWarshall {
     Matriz pai;
 };
 
+// estrutra para guardar o nos da arvore geradora e um inteiro pro custo total
 struct ArvoreGeradora {
     vector<Aresta> arestas;
     int custo;

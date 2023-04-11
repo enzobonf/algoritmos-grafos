@@ -39,10 +39,14 @@ void Grafo::mostrar() {
     printMatriz(matriz);
 }
 
+//Pre-Condicao: grafo existir
+//Pos-Condicao: gera um arquivo .png contendo a imagem do grafo
 void Grafo::desenhar(){
     this->desenhar(vector<Aresta>(), "grafo.png");
 }
 
+//Pre-Condicao: grafo existir
+//Pos-Condicao: imprime grafo desenhado
 void Grafo::desenhar(vector<Aresta> arvoreGeradora, string outFile) {
     ostringstream os;
 

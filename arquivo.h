@@ -24,6 +24,8 @@ class Arquivo {
         //Pos-Condicao: Grafo eh lido
         Grafo lerGrafo();
 
+        //Pre-Condicao: Nenhum
+        //Pos-Condicao: Retorna verdadeiro para a criacao do arquivo .dot e falso para o contrario
         static bool escreverArquivoDot(string code);
 };
 
