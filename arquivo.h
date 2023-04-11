@@ -16,6 +16,8 @@ class Arquivo {
     public:
         Arquivo(string nomeArq);
         Grafo lerGrafo();
+
+        static bool escreverArquivoDot(string code);
 };
 
 #endif

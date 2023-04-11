@@ -34,3 +34,13 @@ Grafo Arquivo::lerGrafo(){
         return grafo;
     }
 }
+
+bool Arquivo::escreverArquivoDot(string code){
+    auto nomeOut = "output.dot";
+    ofstream outfile(nomeOut);
+    if(!outfile.is_open()) return false;
+
+    outfile << code;
+    outfile.close();
+    return true;
+}

@@ -298,14 +298,15 @@ void Algoritmos::executarKruskal(Grafo g){
     printf("peso total: %d\n", resultado.custo);
     printf("arestas: ");
     for(int i = 0; i < arestas.size(); i++){
-        printf("(%d, %d)", arestas[i], arestas[i].dest);
+        printf("(%d, %d)", arestas[i].origem, arestas[i].dest);
         if(i != arestas.size() - 1) printf(", ");
     }
 
+    g.desenhar(arestas, "kruskal.png");
+
 }
 
-ResultadoKruskal kruskalAux(Grafo g){
-
+ArvoreGeradora kruskalAux(Grafo g){
     vector<Aresta> arestas;
     for(int i = 0; i < g.nVertices; i++){
         for(int j = 0; j < g.nVertices; j++){
@@ -342,4 +343,71 @@ int find_set(vector<int> &pai, int v){
 
 void union_sets(vector<int> &pai, int a, int b){
     pai[a] = pai[b];
+}
+
+//Calcular arvore geradora mınima usando o algoritmo Kruskal
+//Pre-condicao: Grafo existente
+//Pos-condicao: Arvore geradora eh calculada e impressa
+//Entrada: objeto para Grafo g
+//Retorno: Nenhum
+void Algoritmos::executarPrim(Grafo g, int s){
+    
+    auto resultado = primAux(g, s);
+    auto arestas = resultado.arestas;
+    printf("vertice inicial: %d\n", s);
+    printf("peso total: %d\n", resultado.custo);
+    printf("arestas: ");
+    for(int i = 0; i < arestas.size(); i++){
+        printf("(%d, %d)", arestas[i].origem, arestas[i].dest);
+        if(i != arestas.size() - 1) printf(", ");
+    }
+
+    g.desenhar(arestas, "prim.png");
+
+}
+
+ArvoreGeradora primAux(Grafo g, int s){
+    
+    vector<Aresta> resultado; int custo = 0;
+    vector<int> d(g.nVertices, infinity);
+    vector<int> pai(g.nVertices, -1);
+    vector<int> cor(g.nVertices, BRANCO);
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+
+    //cor[s] = CINZA;
+    d[s] = 0;
+    pq.push({0, s});
+
+    while(!pq.empty()){
+        auto pair = pq.top();
+        int u = pair.second;
+        pq.pop();
+
+        if(cor[u] != BRANCO) continue;
+
+        cor[u] = CINZA;
+
+        auto adj = g.matriz[u];
+        for(int v = 0; v < g.nVertices; v++){
+            if(adj[v] == infinity || u == v) continue;
+
+            cout << adj[v] << endl;
+
+            if(cor[v] == BRANCO && adj[v] < d[v]){  
+                pai[v] = u;
+                d[v] = adj[v];
+                pq.push({adj[v], v});
+            }
+        }
+    }
+
+    for(int i = 0; i < g.nVertices; i++){
+        if(pai[i] != -1 && d[i] != infinity){
+            custo += d[i];
+            resultado.push_back(Aresta(pai[i], i, d[i]));
+        }
+    }
+
+    return {resultado, custo};
+
 }

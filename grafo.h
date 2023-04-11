@@ -1,9 +1,11 @@
+#include <cstdlib>
 #include <iostream>
 #include <limits>
 #include <vector>
 #include <set>
 #include <stdio.h>
 #include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -40,6 +42,7 @@ class Grafo {
         void addAresta(int origem, int dest, int peso);
         void mostrar();
         void desenhar();
+        void desenhar(vector<Aresta> arvoreGeradora, string outFile);
 };
 
 void printMatriz(Matriz matriz);
