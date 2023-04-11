@@ -205,6 +205,20 @@ bool bellmanFordAux(Grafo g, vector<int> &d, vector<int> &pai, vector<int> &cor)
 //Pre-condicao: Grafo existente
 //Pos-condicao: Menor caminho entre todos os pares de vertices eh calculado e impresso na tela
 void Algoritmos::executarFloydWarshall(Grafo g){
+
+    vector<int> d(g.nVertices, infinity);
+    vector<int> pai(g.nVertices, -1);
+    vector<int> cor(g.nVertices, BRANCO);
+    d[0] = 0;
+    cor[0] = CINZA;
+
+    bool temCicloNegativo = !bellmanFordAux(g, d, pai, cor);
+
+    if(temCicloNegativo){
+        cout << "Nao e possivel aplicar o algoritmo de Floyd-Warshall - ha um ciclo negativo no grafo\n";
+        return;
+    }
+
     auto resultado = floydWarshallAux(g.matriz);
     printMatriz(resultado.d);
 
