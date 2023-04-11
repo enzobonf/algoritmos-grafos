@@ -9,8 +9,6 @@ Grafo::Grafo(int nVertices, bool isOrientado){
     this->nVertices = nVertices;
     this->isOrientado = isOrientado;
     inicializaMatriz();
-
-    cout << "n vertices: " << nVertices << '\n';
 }
 
 //Pre-Condicao: O grafo deve conhecer seu numero de vertices
