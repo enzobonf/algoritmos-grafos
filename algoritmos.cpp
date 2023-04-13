@@ -221,6 +221,7 @@ void Algoritmos::executarFloydWarshall(Grafo g){
 
     auto resultado = floydWarshallAux(g.matriz);
     printMatriz(resultado.d);
+    printMatriz(resultado.pai);
 
     for(int i = 0; i < g.nVertices; i++)
         for(int j = 0; j < g.nVertices; j++){
@@ -360,7 +361,6 @@ ArvoreGeradora primAux(Grafo g, int s){
         pq.pop();
 
         if(cor[u] != BRANCO) continue;
-
         cor[u] = CINZA;
 
         auto adj = g.matriz[u];

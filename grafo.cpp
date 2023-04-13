@@ -55,24 +55,26 @@ void Grafo::desenhar(vector<Aresta> arvoreGeradora, string outFile) {
     for (int i = 0; i < nVertices; i++) {
         os << i << " [label=\"" << i << "\"" << (arvoreGeradora.size() ? ", color=green" : "") << "];\n";
     }
-
+    
+    set<pair<int, int>> arestasGeradoras;
     set<pair<int, int>> arestas;
 
     for(auto& aresta: arvoreGeradora){ // Adiciona as arestas da árvore geradora
-        os << aresta.origem << " -- " << aresta.dest;
-        os << " [label=\"" << matriz[aresta.origem][aresta.dest] << "\", color=green];\n";
-        arestas.insert({aresta.origem, aresta.dest});
+       /*  os << aresta.origem << " -- " << aresta.dest;
+        os << " [label=\"" << matriz[aresta.origem][aresta.dest] << "\", color=green];\n"; */
+        arestasGeradoras.insert({aresta.origem, aresta.dest});
     }
 
     // Adiciona as arestas restantes
     for (int i = 0; i < nVertices; i++) {
         for (int j = 0; j < nVertices; j++) {
 
-            if(i == j || arestas.count({i, j}) || (!isOrientado && arestas.count({j, i}) > 0)) continue;
+            if(i == j || /* arestas.count({i, j}) || */ (!isOrientado && arestas.count({j, i}) > 0)) continue;
 
             if (matriz[i][j] != infinity) {
                 os << i << (isOrientado ? " -> " : " -- ") << j;
-                os << " [label=\"" << matriz[i][j] << "\"];\n";
+                bool isGeradora = !isOrientado && (arestasGeradoras.count({i, j}) || arestasGeradoras.count({j, i}));
+                os << " [label=\"" << matriz[i][j] << "\"" << (isGeradora ? ", color=green" : "") << "];\n";
             }
 
             if(!isOrientado) arestas.insert({i, j});
