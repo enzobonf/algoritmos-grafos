@@ -221,7 +221,6 @@ void Algoritmos::executarFloydWarshall(Grafo g){
 
     auto resultado = floydWarshallAux(g.matriz);
     printMatriz(resultado.d);
-    printMatriz(resultado.pai);
 
     for(int i = 0; i < g.nVertices; i++)
         for(int j = 0; j < g.nVertices; j++){
