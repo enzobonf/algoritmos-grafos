@@ -221,7 +221,6 @@ void Algoritmos::executarFloydWarshall(Grafo g){
 
     auto resultado = floydWarshallAux(g.matriz);
     printMatriz(resultado.d);
-    printMatriz(resultado.pai);
 
     for(int i = 0; i < g.nVertices; i++)
         for(int j = 0; j < g.nVertices; j++){
@@ -313,13 +312,17 @@ ArvoreGeradora kruskalAux(Grafo g){
 //Pos-condicao: O retorno eh o pai do vertice
 int find_set(vector<int> &pai, int v){
     if(v == pai[v]) return v;
-    return find_set(pai, pai[v]);
+    return pai[v] = find_set(pai, pai[v]);
 }
 
 //Pre-condicao: Vetor para pai existente, "a" e "b" sao vertices existentes no grafo
 //Pos-condicao: Atualiza o Vetor de Pai
 void union_sets(vector<int> &pai, int a, int b){
-    pai[a] = pai[b];
+    a = find_set(pai, a);
+    b = find_set(pai, b);
+    if(a != b) {
+        pai[b] = pai[a];
+    }
 }
 
 //Calcular arvore geradora mınima usando o algoritmo Kruskal
