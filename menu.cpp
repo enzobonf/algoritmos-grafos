@@ -27,7 +27,7 @@ void Menu::iniciar() {
     int opcao = -1;
     string nomeArq;
 
-    cout << "1 -Carregar grafo\n"
+    cout << "1 - Carregar grafo\n"
          << "0 - Sair\n" ;
     
     cin >> opcao;
