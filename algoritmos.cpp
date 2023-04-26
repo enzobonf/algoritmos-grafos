@@ -360,6 +360,7 @@ ArvoreGeradora primAux(Grafo g, int s){
 
     while(!pq.empty()){
         auto pair = pq.top();
+        cout << pair.first << endl;
         int u = pair.second;
         pq.pop();
 
@@ -379,6 +380,7 @@ ArvoreGeradora primAux(Grafo g, int s){
     }
 
     for(int i = 0; i < g.nVertices; i++){
+        //printf("pai[%d] = %d\n", i, pai[i]);
         if(pai[i] != -1 && d[i] != infinity){
             custo += d[i];
             resultado.push_back(Aresta(pai[i], i, d[i]));
