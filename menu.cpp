@@ -100,7 +100,7 @@ void Menu::iniciar() {
     }
 }
 
-int Menu::lerVerticeOrigem(){
+void Menu::lerVerticeOrigem(){
     cout << "Entre com o vertice de origem: ";
     cin >> origem; cout << '\n';
 }

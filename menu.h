@@ -16,7 +16,7 @@ class Menu {
       int origem = -1;
       void mostrarOpcoes();
       void carregarGrafo();
-      int lerVerticeOrigem();
+      void lerVerticeOrigem();
     public:
       Menu() = default;
       void iniciar();

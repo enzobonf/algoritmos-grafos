@@ -37,6 +37,8 @@ Grafo Arquivo::lerGrafo(){
 
         return grafo;
     }
+
+    return Grafo(0, false);
 }
 
 //Pre-Condicao: Nenhum
